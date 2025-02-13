@@ -22,19 +22,23 @@ class User < ApplicationRecord
   ## Direct associations
 
   # User#comments: returns rows from the comments table associated to this user by the author_id column
-
+    belongs_to :comments, class_name: "Comment", foreign_key: "author_id", primary_key: "id"
   # User#own_photos: returns rows from the photos table  associated to this user by the owner_id column
+    belongs_to :own_photos, class_name: "Photo", foreign_key: "owner_id", primary_key: "id"
 
   # User#likes: returns rows from the likes table associated to this user by the fan_id column
+    belongs_to :likes, class_name: "Like", foreign_key: "fan_id", primary_key: "id"
 
   # User#sent_follow_requests: returns rows from the follow requests table associated to this user by the sender_id column
+    belongs_to :sent_follow_requests, class_name: "Follow Request", foreign_key: "sender_id", primary_key: "id"
 
   # User#received_follow_requests: returns rows from the follow requests table associated to this user by the recipient_id column
-
+    belongs_to :received_follow_requests, class_name: "Follow Request", foreign_key: "recipient_id", primary_key: "id"
 
   ### Scoped direct associations
 
   # User#accepted_sent_follow_requests: returns rows from the follow requests table associated to this user by the sender_id column, where status is 'accepted'
+    belongs
 
   # User#accepted_received_follow_requests: returns rows from the follow requests table associated to this user by the recipient_id column, where status is 'accepted'
 
